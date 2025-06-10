@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+
+# Mac related
+.DS_Store
+
+# vector store related
+chroma/
+tax-markdown/
+tax-original/

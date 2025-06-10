@@ -1,0 +1,33 @@
+[project]
+name = "langgraph-book"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.13.4",
+    "chromadb>=0.6.3",
+    "docx2txt>=0.9",
+    "duckduckgo-search>=8.0.1",
+    "html2text>=2025.4.15",
+    "ipykernel>=6.29.5",
+    "langchain>=0.3.24",
+    "langchain-anthropic>=0.3.15",
+    "langchain-chroma>=0.2.3",
+    "langchain-community>=0.3.22",
+    "langchain-huggingface>=0.1.2",
+    "langchain-mcp-adapters>=0.1.7",
+    "langchain-openai>=0.3.14",
+    "langchain-pinecone>=0.2.5",
+    "langchain-text-splitters>=0.3.8",
+    "langchain-upstage>=0.6.0",
+    "langgraph>=0.4.1",
+    "markdown>=3.8",
+    "nest-asyncio>=1.6.0",
+    "numpy>=2.2.5",
+    "openai>=1.76.0",
+    "py-zerox>=0.0.7",
+    "python-docx>=1.1.2",
+    "python-dotenv>=1.1.0",
+    "tiktoken>=0.9.0",
+]
