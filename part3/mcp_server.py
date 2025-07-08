@@ -90,4 +90,4 @@ def get_market_value_rate(question: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="stdio")
