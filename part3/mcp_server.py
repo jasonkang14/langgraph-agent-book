@@ -2,6 +2,7 @@
 from mcp.server.fastmcp import FastMCP
 from dotenv import load_dotenv
 
+# 환경 변수를 불러온다.
 load_dotenv()
 
 # MCP 서버 생성
