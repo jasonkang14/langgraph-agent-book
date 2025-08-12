@@ -2,7 +2,7 @@
 from mcp.server.fastmcp import FastMCP
 from dotenv import load_dotenv
 
-# 환경 변수를 불러온다.
+# 환경변수를 불러온다.
 load_dotenv()
 
 # MCP 서버 생성
@@ -11,25 +11,26 @@ mcp = FastMCP("house_tax")
 
 # 덧셈 도구 추가
 @mcp.tool(
-    name="add",
-    description="두 숫자를 더합니다",
+    name="add",  # 도구의 이름 작성
+    description="두 숫자를 더합니다",  # 도구의 설명(역할) 작성
 )
 def add(a: int, b: int) -> int:
-    """두 숫자를 더합니다"""
+    """두 숫자를 더합니다"""  # docstring은 남겨두어도 상관없다.
     return a + b
-
 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from datetime import datetime
 from langchain_community.tools import DuckDuckGoSearchRun
+from dotenv import load_dotenv
+
+# 환경변수를 불러온다.
+load_dotenv()
+
 from langchain_openai import ChatOpenAI
 
-small_llm = ChatOpenAI(
-    model='gpt-4o-mini',
-    temperature=0
-)
-
+llm = ChatOpenAI(model='gpt-4o')
+small_llm = ChatOpenAI(model='gpt-4o-mini')
 
 # 현재 공정시장가액비율 검색
 def get_market_value_rate_search():
@@ -90,4 +91,4 @@ def get_market_value_rate(question: str) -> str:
 
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="stdio")  # stdio 또는 streamable-http

@@ -1,7 +1,7 @@
 # %%
 from dotenv import load_dotenv
 
-# 환경 변수 파일(.env)을 불러온다
+# 환경변수 파일(.env)을 불러온다
 load_dotenv()
 
 # %%
