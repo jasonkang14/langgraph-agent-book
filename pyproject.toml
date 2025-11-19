@@ -3,12 +3,18 @@ name = "langgraph-agent-book"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.13"
 dependencies = [
+    "docx2txt>=0.9",
     "ipykernel>=7.1.0",
+    "langchain>=1.0.7",
+    "langchain-chroma>=1.0.0",
+    "langchain-community>=0.4.1",
     "langchain-huggingface>=1.0.1",
     "langchain-ollama>=1.0.0",
     "langchain-openai>=1.0.3",
+    "langchain-text-splitters>=1.0.0",
+    "langsmith>=0.4.43",
     "numpy>=2.3.5",
     "python-dotenv>=1.2.1",
     "torch>=2.9.1",
