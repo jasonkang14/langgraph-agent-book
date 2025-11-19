@@ -21,7 +21,7 @@ def add(a: int, b: int) -> int:
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from datetime import datetime
-from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_tavily import TavilySearch
 from dotenv import load_dotenv
 
 # 환경변수를 불러온다.
@@ -41,8 +41,14 @@ def get_market_value_rate_search():
         str: 현재 공정시장가액비율에 대한 정보가 포함된 검색 결과
     """
     # 검색 도구 초기화
-    search = DuckDuckGoSearchRun()
-    return search.invoke(f"{datetime.now().year}년도 공정시장가액비율은?")
+    search = TavilySearch(
+        include_answer=True
+    )
+    # 현재 연도의 공정시장가액비율을 검색한다.
+    # datetime.now()로 현재 연도를 동적으로 가져와서 검색어에 포함한다.
+    market_value_rate_search = search.invoke(f"{datetime.now().year}년도 공정시장가액비율은?")
+    market_value_rate_search = market_value_rate_search['answer']
+    return market_value_rate_search
 
 
 @mcp.tool(

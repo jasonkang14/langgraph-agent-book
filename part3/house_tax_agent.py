@@ -5,14 +5,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # %%
-from langchain_upstage import UpstageEmbeddings
+import os
 from langchain_openai import ChatOpenAI
 from langchain_pinecone import PineconeVectorStore
+from langchain_openai import OpenAIEmbeddings
 
-# Upstage의 SOLAR 임베딩 모델을 초기화한다
-embedding = UpstageEmbeddings(
-    model='solar-embedding-1-large'  
+# 업스테이지의 임베딩 모델을 초기화한다.
+embedding = OpenAIEmbeddings(
+    base_url='https://api.upstage.ai/v1/solar',
+    api_key=os.getenv("UPSTAGE_API_KEY"),
+    model='embedding-passage',
+    check_embedding_ctx_length=False 
 )
+
 
 # ChatOpenAI를 활용해서 사용할 LLM을 선언한다
 llm = ChatOpenAI(model='gpt-4o')
@@ -152,9 +157,7 @@ def get_tax_base_equation() -> str:
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from datetime import datetime
-from langchain_community.tools import DuckDuckGoSearchRun
-
-
+from langchain_tavily import TavilySearch
 
 @tool
 def get_market_value_rate(question: str) -> str:
@@ -171,12 +174,16 @@ def get_market_value_rate(question: str) -> str:
     Returns:
         str: 공정시장가액비율 백분율 (예: '60%', '45%')
     """
-    # DuckDuckGo 검색 도구를 초기화한다.
-    search = DuckDuckGoSearchRun()
 
+
+    # Tavily 검색 도구를 초기화한다.
+    search = TavilySearch(
+        include_answer=True
+    )
     # 현재 연도의 공정시장가액비율을 검색한다.
-    # 실시간 정보를 가져오기 위해 현재 날짜를 동적으로 사용한다.
+    # datetime.now()로 현재 연도를 동적으로 가져와서 검색어에 포함한다.
     market_value_rate_search = search.invoke(f"{datetime.now().year}년도 공정시장가액비율은?")
+    market_value_rate_search = market_value_rate_search['answer']
 
     # 검색 결과에서 정확한 비율만 추출하기 위한 프롬프트를 정의한다.
     # 불필요한 설명 없이 비율만 반환하도록 명확히 지시한다.
