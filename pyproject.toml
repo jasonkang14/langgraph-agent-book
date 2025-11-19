@@ -17,7 +17,9 @@ dependencies = [
     "langchain-text-splitters>=1.0.0",
     "langsmith>=0.4.43",
     "numpy>=2.3.5",
+    "python-docx>=1.2.0",
     "python-dotenv>=1.2.1",
+    "tiktoken>=0.12.0",
     "torch>=2.9.1",
     "transformers>=4.57.1",
 ]
