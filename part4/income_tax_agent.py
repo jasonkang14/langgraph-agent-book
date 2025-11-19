@@ -23,7 +23,7 @@ vector_store = PineconeVectorStore.from_existing_index(
                        embedding=embedding, )
 
 # %%
-from langchain.tools.retriever import create_retriever_tool
+from langchain_core.tools.retriever import create_retriever_tool
 
 retriever = vector_store.as_retriever()
 retriever_tool = create_retriever_tool(
@@ -34,13 +34,9 @@ retriever_tool = create_retriever_tool(
 
 
 # %%
-from langgraph.prebuilt import create_react_agent
-from langchain_openai import ChatOpenAI
+from langchain.agents import create_agent
 
-llm = ChatOpenAI(model='gpt-4o')
-small_llm = ChatOpenAI(model='gpt-4o-mini')
-
-income_tax_agent = create_react_agent(llm, tools=[retriever_tool])
+income_tax_agent = create_agent(model='gpt-4o', tools=[retriever_tool])
 # %%
 
 
