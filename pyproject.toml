@@ -13,6 +13,7 @@ dependencies = [
     "langchain-huggingface>=1.0.1",
     "langchain-ollama>=1.0.0",
     "langchain-openai>=1.0.3",
+    "langchain-tavily>=0.2.13",
     "langchain-text-splitters>=1.0.0",
     "langsmith>=0.4.43",
     "numpy>=2.3.5",
