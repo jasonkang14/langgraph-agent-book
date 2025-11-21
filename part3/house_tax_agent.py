@@ -153,7 +153,7 @@ def get_tax_base_equation() -> str:
 
 
 # %%
-# 덕덕고 검색을 통해 최신 정보를 가져온다.
+# Tavily 검색을 통해 최신 정보를 가져온다.
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from datetime import datetime
