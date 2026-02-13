@@ -48,10 +48,11 @@ graph_builder = StateGraph(MessagesState)
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
-from langchain import hub
+from langsmith import Client
 
 # LangChain Hub에서 검증된 RAG 프롬프트를 가져온다.
-rag_prompt = hub.pull("rlm/rag-prompt")
+client = Client()
+rag_prompt = client.pull_prompt("rlm/rag-prompt")
 
 # 문서 포매팅 헬퍼 함수
 def format_docs(docs):
